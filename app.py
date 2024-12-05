@@ -12,12 +12,6 @@ app = Flask(__name__)
 # Load environment variables
 load_dotenv()
 
-# Set up API keys and URLs
-# GOOGLE_TRANSLATE_API_URL = ""
-# GOOGLE_API_KEY = 
-# AWS_ACCESS_KEY = 
-# AWS_SECRET_KEY = 
-# AWS_REGION = 
 
 # Initialize models for similarity and embeddings
 nlp = spacy.load("en_core_web_md")

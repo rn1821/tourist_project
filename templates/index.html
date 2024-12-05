@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Navigator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="City Navigator Logo" class="logo">
+        <h1 class="logo-title">City Navigator</h1>
+        <nav class="tabs">
+            <a href="/emergency">Emergency Services</a>
+            <a href="/entertainment">Entertainment</a>
+        </nav>
+    </div>
+
+    <!-- Hero section with language selection -->
+    <div class="hero-section" style="background-image: url('{{ url_for('static', filename='images/chennai1.jpg') }}');">
+        <h2 class="hero-title">Tourist Destinations in Vellore</h2>
+        <form method="POST" class="language-form">
+            <label for="language">Select Language:</label>
+            <select name="language" id="language">
+                <option value="en" {% if selected_language == 'en' %}selected{% endif %}>English</option>
+                <option value="ta" {% if selected_language == 'ta' %}selected{% endif %}>Tamil</option>
+                <option value="fr" {% if selected_language == 'fr' %}selected{% endif %}>French</option>
+                <option value="de" {% if selected_language == 'de' %}selected{% endif %}>German</option>
+                <option value="es" {% if selected_language == 'es' %}selected{% endif %}>Spanish</option>
+            </select>
+            <button type="submit">Translate</button>
+        </form>
+    </div>
+
+    <!-- Container for content to center it and give proper spacing -->
+    <div class="container">
+        <div class="content">
+            {% for place, description in descriptions.items() %}
+                <div class="destination" style="background-image: url('{{ url_for('static', filename='images/' + place + '.jpg') }}');">
+                    <div class="overlay">
+                        <h3>{{ place.capitalize() }}</h3>
+                        <p>{{ description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entertainment - City Navigator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">City Navigator</div>
+      <div class="nav-links">
+        <a href="#">Emergency Services</a>
+        <a href="#">Tourist Guide</a>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <!-- Language Selector Section -->
+      <div class="language-container">
+        <span class="language-label">Select Language</span>
+        <!-- Language Selector Form -->
+        <form method="POST" action="{{ url_for('entertainment') }}">
+          <select name="language" class="language-select" onchange="this.form.submit()">
+            <option value="en" {% if selected_language == 'en' %}selected{% endif %}>English</option>
+            <option value="hi" {% if selected_language == 'hi' %}selected{% endif %}>Hindi</option>
+            <option value="ta" {% if selected_language == 'ta' %}selected{% endif %}>Tamil</option>
+            <option value="te" {% if selected_language == 'te' %}selected{% endif %}>Telugu</option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="content-container">
+    <!-- Filters -->
+    <div class="filters">
+      <button class="filter-btn">All</button>
+      <button class="filter-btn">Theaters</button>
+      <button class="filter-btn">Restaurants</button>
+      <button class="filter-btn">Hotels</button>
+    </div>
+
+    <!-- Theater Listings -->
+    <div class="theater-list">
+      {% for theater in theaters %}
+        <div class="theater-card">
+          <!-- Image Section -->
+          <div class="theater-image">
+            <img src="{{ theater.image }}" alt="{{ theater.name }}">
+            <div class="hours">{{ theater.hours }}</div>
+            <button class="info-btn">Info</button>
+          </div>
+          
+          <!-- Content Section -->
+          <div class="theater-info">
+            <h3 class="theater-name">{{ theater.name }}</h3>
+            <p class="distance">{{ theater.distance }}</p>
+            <div class="rating">
+              <span class="rating-value">{{ theater.rating }}</span> ★
+            </div>
+            <div class="facilities">
+              <p>Facilities Available</p>
+              {% for facility in theater.facilities %}
+                <span class="facility">{{ facility }}</span>
+              {% endfor %}
+            </div>
+            <div class="languages">
+              <p>Languages Available</p>
+              {% for language in theater.languages %}
+                <span class="language">{{ language }}</span>
+              {% endfor %}
+            </div>
+            <div class="pricing">
+              <p>Average Cost</p>
+              {% for price in theater.pricing %}
+                <span class="price">{{ price.price }} / {{ price.type }}</span>
+              {% endfor %}
+            </div>
+            <button class="website-btn">Visit Website</button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f1f5f9;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1rem;
+    color: #e0eaf5;
+}
+
+.emergency-section {
+    width: 90%;
+    max-width: 700px;
+    margin: 2rem 0;
+}
+
+.emergency-section h2 {
+    font-size: 1.75rem;
+    color: #0056b3;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #0056b3;
+}
+
+.service-card {
+    background: #ffffff;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-left: 4px solid #007bff;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 0.75rem;
+}
+
+.service-card p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #444;
+}
+
+.service-card p strong {
+    color: #0056b3;
+}
+
+footer {
+    padding: 1rem;
+    background: #333;
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+@media (min-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .emergency-section h2 {
+        font-size: 2rem;
+    }
+    
+    .service-card h3 {
+        font-size: 1.6rem;
+    }
+}

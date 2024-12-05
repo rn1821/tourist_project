@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Services in Vellore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=1.0">
+</head>
+<body>
+    <header>
+        <h1>Emergency Services in Vellore</h1>
+        <p>Find essential emergency contacts for hospitals and police in Vellore, Tamil Nadu, India.</p>
+    </header>
+
+    <!-- Hospitals Section -->
+    <section class="emergency-section">
+        <h2>Nearby Hospitals</h2>
+        {% for hospital in emergency_data.hospitals %}
+        <div class="service-card">
+            <h3>{{ hospital.name }}</h3>
+            <p><strong>Location:</strong> {{ hospital.location }}</p>
+            <p><strong>Phone:</strong> {{ hospital.phone }}</p>
+            {% if hospital.emergency %}
+            <p><strong>Emergency:</strong> {{ hospital.emergency }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+
+    <!-- Police Section -->
+    <section class="emergency-section">
+        <h2>Police Contacts</h2>
+        {% for station in emergency_data.police %}
+        <div class="service-card">
+            <h3>{{ station.name }}</h3>
+            <p><strong>Phone:</strong> {{ station.phone }}</p>
+            <p><strong>Location:</strong> {{ station.location }}</p>
+        </div>
+        {% endfor %}
+    </section>
+
+    <!-- Additional Emergency Contacts -->
+    <section class="emergency-section">
+        <h2>Additional Emergency Contacts</h2>
+        <div class="service-card">
+            <p><strong>Ambulance:</strong> {{ emergency_data.additional_contacts.ambulance }}</p>
+            <p><strong>Fire Department:</strong> {{ emergency_data.additional_contacts.fire }}</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 City Navigator. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+

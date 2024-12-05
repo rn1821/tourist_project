@@ -12,6 +12,12 @@ app = Flask(__name__)
 # Load environment variables
 load_dotenv()
 
+# Set up API keys and URLs
+GOOGLE_TRANSLATE_API_URL = "https://translation.googleapis.com/language/translate/v2"
+GOOGLE_API_KEY = os.getenv('AIzaSyBBPwYlEhRc2iSDisB1ZkLhxg5VC8qUBVU')
+AWS_ACCESS_KEY = os.getenv('AKIAYXG3YGBUGVDTQCHP')
+AWS_SECRET_KEY = os.getenv('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')
+AWS_REGION = 'us-east-1'
 
 # Initialize models for similarity and embeddings
 nlp = spacy.load("en_core_web_md")
